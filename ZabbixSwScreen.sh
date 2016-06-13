@@ -25,7 +25,6 @@ PREFIX=$2
 PORTS=$3
 
 vsize=$((PORTS /3))
-IP=`host $HOSTNAME | cut -d" " -f4`
 
 case $PREFIX in
 	1)
@@ -75,7 +74,7 @@ while [ $i -le $PORTS ];do
     echo -e "                    <sort_triggers>0</sort_triggers>" >> $HOSTNAME.xml
     echo -e "                    <resource>" >> $HOSTNAME.xml
     echo -e "                        <name>Network traffic on $P/$i</name>" >> $HOSTNAME.xml
-    echo -e "                        <host>$IP</host>" >> $HOSTNAME.xml
+    echo -e "                        <host>$HOSTNAME</host>" >> $HOSTNAME.xml
     echo -e "                    </resource>" >> $HOSTNAME.xml
     echo -e "                    <max_columns>3</max_columns>" >> $HOSTNAME.xml
     echo -e "                    <application/>" >> $HOSTNAME.xml
