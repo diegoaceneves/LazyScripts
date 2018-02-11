@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #====================================================================#
-# PhotoTelegram.sh - Send Photo take with webcam to telegram 
+# PhotoTelegram.sh - Send Photo taked with webcam to telegram 
 # 
 # Diego Neves  - <diego@diegoenves.eti.br - github.com/diegoaceneves/
 #
