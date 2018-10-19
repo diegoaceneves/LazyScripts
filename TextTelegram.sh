@@ -1,6 +1,7 @@
 #!/bin/bash
+
 #====================================================================#
-# mkgnome-background-xml - Create a background.xml for gnome-shell 
+# TextTelegram.sh - Send Text Messages 
 # 
 # Diego Neves  - <diego@diegoenves.eti.br - github.com/diegoaceneves/
 #
@@ -10,31 +11,23 @@
 # can do whatever you want with this stuff. If we meet some day, and you think
 # this stuff is worth it, you can buy me a beer in return Poul-Henning Kamp
 # ----------------------------------------------------------------------------
-#
 
-array=(`ls -d $1/*`)
-sizeof=${#array[@]}
-i=1
-TIME="600.0"
-#TIME="6.0"
-echo "<background>"
+# TOKEN = create a bot with @BotFather and paste the token here:
+TOKEN="1234567897:ABCDEFGHIJKLMNOPQRDS_TUVWXYZ1234545"
 
-echo " <static>"
-echo "  <duration>$TIME</duration>"
-echo "  <file>${array[$i]}</file>"
-echo " </static>"
-
-while [[ $i -lt $sizeof ]] ;do
-	echo " "
-	echo " <transition type=\"overlay\">"
-	echo "  <duration>$TIME</duration>"
-	echo "  <from>${array[$i]}</from>"
-
-	echo "  <to>${array[$i]}</to>"
-	(( i++ ))
-	echo " </transition>"
+# CHATID = Id user/group chat;
+#	1) Send a simple message to bot:
+#	2) Access https://api.telegram.org/bot<YourBOTToken>/getUpdates
+# 	3) Look for the "chat" object
+#	4) use "id" of the "chat" object to send your messages.
+CHATID=32541444
 
 
-done
+APIURL="https://api.telegram.org/bot"
+FILE=$(/bin/date +\%Y\%m\%d\%H\%M)
 
-echo "</background>"
+CURL="/usr/bin/curl"
+
+$CURL  -K -s -X POST $APIURL$TOKEN/sendMessage?chat_id=$CHATID --data-urlencode "text=$1"
+
+echo ""
